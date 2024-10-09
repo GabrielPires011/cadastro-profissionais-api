@@ -29,9 +29,33 @@ public class Contato {
         return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getContato() {
+        return contato;
+    }
+
+    public LocalDate getCreatedDate() {
+        return createdDate;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
     public void alterar(AlterarContatoDto dto) {
         this.nome = dto.nome();
         this.contato = dto.contato();
         this.profissional = new Profissional(dto.idProfissional());
+    }
+
+    public Contato(Long id, String nome, String contato, LocalDate createdDate, Profissional profissional) {
+        this.id = id;
+        this.nome = nome;
+        this.contato = contato;
+        this.createdDate = createdDate;
+        this.profissional = profissional;
     }
 }

@@ -10,7 +10,6 @@ import com.br.cadastroprofissionaisapi.repository.ProfissionalRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +32,7 @@ public class ContatoService {
 
     @Transactional
     public Long criar(CriarContatoDto dto) {
-        if (profissionalRepository.existsById(dto.idProfissional()))
+        if (!profissionalRepository.existsById(dto.idProfissional()))
             throw new ValidacaoException(PROFISSIONAL_NAO_ENCONTRADO);
 
         var contato = repository.save(new Contato(dto));
@@ -42,7 +41,7 @@ public class ContatoService {
 
     @Transactional
     public void alterar(Long id, AlterarContatoDto dto) {
-        if (profissionalRepository.existsById(dto.idProfissional()))
+        if (!profissionalRepository.existsById(dto.idProfissional()))
             throw new ValidacaoException(PROFISSIONAL_NAO_ENCONTRADO);
 
         var contato = repository.findById(id)
