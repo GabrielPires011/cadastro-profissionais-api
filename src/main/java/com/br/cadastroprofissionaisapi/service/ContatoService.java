@@ -3,7 +3,6 @@ package com.br.cadastroprofissionaisapi.service;
 import com.br.cadastroprofissionaisapi.dto.AlterarContatoDto;
 import com.br.cadastroprofissionaisapi.dto.CriarContatoDto;
 import com.br.cadastroprofissionaisapi.dto.DadosDetalhadosContatoDto;
-import com.br.cadastroprofissionaisapi.dto.DadosDetalhadosProfissionalDto;
 import com.br.cadastroprofissionaisapi.exception.ValidacaoException;
 import com.br.cadastroprofissionaisapi.model.Contato;
 import com.br.cadastroprofissionaisapi.repository.ContatoRepository;
@@ -11,6 +10,7 @@ import com.br.cadastroprofissionaisapi.repository.ProfissionalRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -70,16 +70,16 @@ public class ContatoService {
     }
 
     public List<Map<String, Object>> buscarProfissionais(String consulta, List<String> campos) {
-        var profissionais = (consulta == null || consulta.isEmpty())
+        var contatos = (consulta == null || consulta.isEmpty())
                 ? repository.buscarPorQuery(null)
                 : repository.buscarPorQuery(consulta);
 
         return campos != null && !campos.isEmpty()
-                ? filtrarCampos(profissionais, campos)
-                : profissionais.stream().map(this::dtoParaMapa).toList();
+                ? filtrarCampos(contatos, campos)
+                : contatos.stream().map(this::dtoParaMapa).toList();
     }
 
-    private Map<String, Object> dtoParaMapa(DadosDetalhadosProfissionalDto profissional) {
-        return extrairCampos(profissional, List.of("id", "nome", "cargo", "nascimento", "createdDate"));
+    private Map<String, Object> dtoParaMapa(DadosDetalhadosContatoDto profissional) {
+        return extrairCampos(profissional, List.of("id", "nome", "contato", "createdDate", "profissional"));
     }
 }

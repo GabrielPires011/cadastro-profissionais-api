@@ -29,5 +29,5 @@ public interface ContatoRepository extends JpaRepository<Contato, Long> {
             "where :query is null " +
             "or lower(c.nome) like lower(concat('%', :query, '%')) " +
             "or lower(str(c.contato)) like lower(concat('%', :query, '%'))")
-    List<DadosDetalhadosProfissionalDto> buscarPorQuery(@Param("query") String query);
+    List<DadosDetalhadosContatoDto> buscarPorQuery(@Param("query") String query);
 }
