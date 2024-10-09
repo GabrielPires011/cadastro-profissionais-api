@@ -83,7 +83,7 @@ public class ProfissionalController {
             @ApiResponse(responseCode = "200", description = "Lista de profissionais retornada com sucesso"),
             @ApiResponse(responseCode = "400", description = "Parâmetros de consulta inválidos")
     })
-    @GetMapping("/profissionais")
+    @GetMapping
     public ResponseEntity<List<Map<String, Object>>> buscarProfissionais(
             @RequestParam(required = false) String q,
             @RequestParam(required = false) List<String> fields) {
