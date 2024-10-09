@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: profissional
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/profissional
+      DATASOURCE_USERNAME: root
+      DATASOURCE_PASSWORD: root
+    entrypoint: ["/bin/sh", "-c", "until nc -z postgres 5432; do echo 'Waiting for Postgres...'; sleep 2; done; exec java -jar app.jar"]
