@@ -48,8 +48,8 @@ public class ProfissionalController {
             @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos")
     })
     @PostMapping
-    public ResponseEntity<Long> criar(@Valid @RequestBody CriarProfissionalDto dto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.criar(dto));
+    public ResponseEntity<String> criar(@Valid @RequestBody CriarProfissionalDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body("Sucesso profissional com id " + service.criar(dto) + " cadastrado");
     }
 
     @Operation(summary = "Altera o profissional",
