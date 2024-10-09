@@ -11,7 +11,7 @@ public class CampoExtractorUtil {
         Map<String, Object> mapa = new HashMap<>();
         for (String campo : campos) {
             try {
-                String metodoGetter = "get" + Character.toUpperCase(campo.charAt(0)) + campo.substring(1);
+                String metodoGetter = campo.charAt(0) + campo.substring(1);
                 Method metodo = objeto.getClass().getMethod(metodoGetter);
                 Object valor = metodo.invoke(objeto);
                 mapa.put(campo, valor);

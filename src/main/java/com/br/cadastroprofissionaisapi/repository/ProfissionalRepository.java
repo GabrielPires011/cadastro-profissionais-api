@@ -22,9 +22,12 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
                                        @Param("cargo") Cargo cargo,
                                        @Param("nascimento") LocalDate nascimento);
 
-    @Query("select new com.br.cadastroprofissionaisapi.dto.DadosDetalhadosProfissionalDto(p.id, p.nome, p.cargo, p.nascimento, p.createdDate)" +
-            " from Profissional p where "
-            + ":query is null or lower(p.nome) like lower(concat('%', :query, '%') ) or "
-            + "lower(p.cargo) like lower(concat('%', :query, '%'))")
+    @Query("select new com.br.cadastroprofissionaisapi.dto.DadosDetalhadosProfissionalDto(p.id, p.nome, p.cargo, p.nascimento, p.createdDate) " +
+            "from Profissional p " +
+            "where :query is null " +
+            "or lower(p.nome) like lower(concat('%', :query, '%')) " +
+            "or lower(str(p.cargo)) like lower(concat('%', :query, '%'))")
     List<DadosDetalhadosProfissionalDto> buscarPorQuery(@Param("query") String query);
+
+
 }

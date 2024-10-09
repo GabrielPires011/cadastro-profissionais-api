@@ -32,9 +32,29 @@ public class Profissional {
         return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
     public void alterar(AlterarProfissionalDto dto) {
         this.nome = dto.nome();
         this.cargo = dto.cargo();
         this.nascimento = dto.nascimento();
+    }
+
+    public Profissional(Long id, String nome, Cargo cargo, LocalDate nascimento, LocalDate createdDate) {
+        this.id = id;
+        this.nome = nome;
+        this.cargo = cargo;
+        this.nascimento = nascimento;
+        this.createdDate = createdDate;
     }
 }

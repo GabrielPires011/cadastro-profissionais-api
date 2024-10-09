@@ -40,8 +40,7 @@ public class ProfissionalService {
         if (repository.buscarProfissionalRepetido(dto.nome(), dto.cargo(), dto.nascimento()))
             throw new ValidacaoException(PROFISSIONAL_JA_CADASTRADO);
 
-        var profissional = new Profissional(dto);
-        repository.save(profissional);
+        var profissional = repository.save(new Profissional(dto));
         return profissional.getId();
     }
 
