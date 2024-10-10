@@ -65,6 +65,18 @@ A aplicação Java é configurada para rodar na porta `8080`. O código fonte es
 - **Java 17 / Spring Boot 3.3.3:** Framework utilizado para construir a API REST.
 - **Docker Compose:** Facilita a orquestração de contêineres, tanto da aplicação quanto do banco de dados.
 
+## Arquivo JSON para Testes
+
+Um arquivo de coleção do Postman (`Cadastro Profissional API.postman_collection.json`) está incluído no projeto para facilitar os testes da API. Ele contém as requisições de exemplo para testar os endpoints de cadastro de profissionais.
+
+Para utilizá-lo:
+
+1. Importe o arquivo no Postman:
+    - Vá para o Postman e clique em **Importar**.
+    - Selecione o arquivo `Cadastro Profissional API.postman_collection.json` disponível no projeto.
+
+2. Após importar, execute as requisições para testar a API.
+
 ## Comandos Úteis
 
 - **Para parar os contêineres:**
