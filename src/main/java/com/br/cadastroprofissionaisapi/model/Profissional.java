@@ -3,7 +3,6 @@ package com.br.cadastroprofissionaisapi.model;
 import com.br.cadastroprofissionaisapi.dto.AlterarProfissionalDto;
 import com.br.cadastroprofissionaisapi.dto.CriarProfissionalDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 

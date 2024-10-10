@@ -33,16 +33,8 @@ public class Contato {
         return nome;
     }
 
-    public String getContato() {
-        return contato;
-    }
-
     public LocalDate getCreatedDate() {
         return createdDate;
-    }
-
-    public Profissional getProfissional() {
-        return profissional;
     }
 
     public void alterar(AlterarContatoDto dto) {
