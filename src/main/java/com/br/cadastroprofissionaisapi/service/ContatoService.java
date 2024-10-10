@@ -64,11 +64,11 @@ public class ContatoService {
 
     public DadosDetalhadosContatoDto buscarPorId(Long id) {
         var dto = repository.buscarDadosDetalhadosContatoDto(id);
-        if (dto == null) throw new ValidacaoException(PROFISSIONAL_NAO_ENCONTRADO);
+        if (dto == null) throw new ValidacaoException(CONTATO_NAO_ENCONTRADO);
         return dto;
     }
 
-    public List<Map<String, Object>> buscarProfissionais(String consulta, List<String> campos) {
+    public List<Map<String, Object>> buscarContatos(String consulta, List<String> campos) {
         var contatos = (consulta == null || consulta.isEmpty())
                 ? repository.buscarPorQuery(null)
                 : repository.buscarPorQuery(consulta);
@@ -78,7 +78,7 @@ public class ContatoService {
                 : contatos.stream().map(this::dtoParaMapa).toList();
     }
 
-    private Map<String, Object> dtoParaMapa(DadosDetalhadosContatoDto profissional) {
-        return extrairCampos(profissional, List.of("id", "nome", "contato", "createdDate", "profissional"));
+    private Map<String, Object> dtoParaMapa(DadosDetalhadosContatoDto dto) {
+        return extrairCampos(dto, List.of("id", "nome", "contato", "createdDate", "idProfissional"));
     }
 }
