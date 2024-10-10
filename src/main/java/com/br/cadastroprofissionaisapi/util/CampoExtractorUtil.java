@@ -1,5 +1,7 @@
 package com.br.cadastroprofissionaisapi.util;
 
+import com.br.cadastroprofissionaisapi.exception.ValidacaoException;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,7 @@ public class CampoExtractorUtil {
                 Object valor = metodo.invoke(objeto);
                 mapa.put(campo, valor);
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                throw new ValidacaoException("Parâmetros de consulta inválidos");
             }
         }
         return mapa;
