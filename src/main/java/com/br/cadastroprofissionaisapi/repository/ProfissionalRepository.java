@@ -26,8 +26,7 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
             "from Profissional p " +
             "where :query is null " +
             "or lower(p.nome) like lower(concat('%', :query, '%')) " +
-            "or lower(str(p.cargo)) like lower(concat('%', :query, '%'))")
+            "or lower(p.cargo) like lower(concat('%', :query, '%'))")
     List<DadosDetalhadosProfissionalDto> buscarPorQuery(@Param("query") String query);
-
 
 }

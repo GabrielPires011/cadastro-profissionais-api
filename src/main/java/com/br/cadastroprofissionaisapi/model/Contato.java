@@ -22,6 +22,7 @@ public class Contato {
         this.nome = dto.nome();
         this.contato = dto.contato();
         this.profissional = new Profissional(dto.idProfissional());
+        this.createdDate = LocalDate.now();
     }
     public Contato() {}
 

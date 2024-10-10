@@ -23,6 +23,7 @@ public class Profissional {
         this.nome = dto.nome();
         this.cargo = dto.cargo();
         this.nascimento = dto.nascimento();
+        this.createdDate = LocalDate.now();
     }
 
     public Profissional() {}

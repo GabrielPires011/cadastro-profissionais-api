@@ -25,7 +25,7 @@ public interface ContatoRepository extends JpaRepository<Contato, Long> {
     @Query("select new com.br.cadastroprofissionaisapi.dto.DadosDetalhadosContatoDto(" +
             "c.id, c.nome, c.contato, c.createdDate, p.id)" +
             "from Contato c " +
-            "inner join Profissional p on p.id = c.id " +
+            "inner join Profissional p on p.id = c.profissional.id " +
             "where :query is null " +
             "or lower(c.nome) like lower(concat('%', :query, '%')) " +
             "or lower(c.contato) like lower(concat('%', :query, '%'))")
